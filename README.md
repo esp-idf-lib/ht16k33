@@ -1,19 +1,26 @@
-# HT16K33 driver
+# esp-idf-lib/ht16k33
 
-Driver for Holtek HT16K33 LED Controller.
+HT16K33 LED controller driver.
 
-## Usage
+* [Documentation](https://esp-idf-lib.github.io/ht16k33/)
+* [Repository](https://github.com/esp-idf-lib/ht16k33)
+* [Issues](https://github.com/esp-idf-lib/ht16k33/issues)
+* [Discussions and questions](https://github.com/esp-idf-lib/core/discussions)
+* [Component page at the ESP Component Registry](https://components.espressif.com/components/esp-idf-lib/ht16k33)
 
-See the datasheet at https://www.holtek.com/documents/10179/116711/HT16K33v120.pdf .
-Chip RAM is 16-byte memory where each bit represents idividual pixel.
-It is possbile to change I2C address using jumpers, see the datasheet.
+## Installation
 
-*  Init descriptor with `ht16k33_init_desc()`.
-*  Init device with `ht16k33_init()`.
-*  Optionally, set up brightness using `ht16k33_set_brightness()`.
-*  Turn display on and set blinking mode using `ht16k33_display_setup()`. Unfortunately, its a single command in HT16K33.
-*  Write RAM state to set individual pixels using `ht16k33_ram_write()`.
-*  At the end, deinitialize using `ht16k33_free_desc()`.
+```sh
+idf.py add-dependency "esp-idf-lib/ht16k33^1.0.0
+```
 
-See the example at `examples/ht16k33`.
+## Support
 
+For questions and discussions about the component, please use
+[Discussions](https://github.com/esp-idf-lib/core/discussions)
+at [esp-idf-lib/core](https://github.com/esp-idf-lib/core).
+
+## Contributing
+
+Please read [CONTRIBUTING.md](https://github.com/esp-idf-lib/core/blob/main/CONTRIBUTING.md)
+at [esp-idf-lib/core](https://github.com/esp-idf-lib/core).
