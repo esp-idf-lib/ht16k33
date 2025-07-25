@@ -16,6 +16,7 @@ targets:
 dependencies:
   esp-idf-lib/i2cdev:
     version: "*"
+maintainers: Timofei Korostelev (@chudsaviet) <timofei_public@dranik.dev>
 url: https://github.com/esp-idf-lib/core
 repository: https://github.com/esp-idf-lib/ht16k33
 documentation: https://esp-idf-lib.github.io/ht16k33/
@@ -24,5 +25,3 @@ discussion: https://github.com/esp-idf-lib/core/discussions
 files:
   exclude:
     - docs/**/*
-maintainers:
-  - Timofei Korostelev (@chudsaviet) <timofei_public@dranik.dev>
