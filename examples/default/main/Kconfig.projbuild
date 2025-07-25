@@ -5,5 +5,5 @@ menu "Example configuration"
         help
             I2C bus frequency.
 
-    rsource "../../../../devtools/Kconfig.i2c"
+    rsource "../../../Kconfig.i2c"
 endmenu
