@@ -11,7 +11,7 @@ HT16K33 LED controller driver.
 ## Installation
 
 ```sh
-idf.py add-dependency "esp-idf-lib/ht16k33^1.0.0
+idf.py add-dependency esp-idf-lib/ht16k33^1.0.0
 ```
 
 ## Support
