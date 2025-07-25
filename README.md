@@ -1,5 +1,9 @@
 # esp-idf-lib/ht16k33
 
+[![Build examples](https://github.com/esp-idf-lib/ht16k33/actions/workflows//build.yml/badge.svg)](https://github.com/esp-idf-lib/ht16k33/actions/workflows//build.yml)
+[![Build docs](https://github.com/esp-idf-lib/ht16k33/actions/workflows//build-docs.yml/badge.svg)](https://github.com/esp-idf-lib/ht16k33/actions/workflows//build-docs.yml)
+[![Validation](https://github.com/esp-idf-lib/ht16k33/actions/workflows//validate-component.yml/badge.svg)](https://github.com/esp-idf-lib/ht16k33/actions/workflows//validate-component.yml)
+
 HT16K33 LED controller driver.
 
 * [Documentation](https://esp-idf-lib.github.io/ht16k33/)
@@ -11,7 +15,7 @@ HT16K33 LED controller driver.
 ## Installation
 
 ```sh
-idf.py add-dependency esp-idf-lib/ht16k33^1.0.0
+idf.py add-dependency esp-idf-lib/ht16k33
 ```
 
 ## Support
