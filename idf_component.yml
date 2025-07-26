@@ -1,5 +1,5 @@
 ---
-version: 1.0.2
+version: 1.0.3
 description: HT16K33 LED controller driver
 license: MIT
 targets:
