@@ -64,19 +64,20 @@ static const char* TAG = "ht16k33";
 static uint8_t ht16k33_blinking_freq_t_to_bits(ht16k33_blinking_freq_t freq)
 {
     uint8_t result = 0;
-    switch (freq) {
-    case HTK16K33_F_0HZ:
-        result = HT16K33_BLINKING_0HZ;
-        break;
-    case HTK16K33_F_2HZ:
-        result = HT16K33_BLINKING_1HZ;
-        break;
-    case HTK16K33_F_1HZ:
-        result = HT16K33_BLINKING_1HZ;
-        break;
-    case HTK16K33_F_05HZ:
-        result = HT16K33_BLINKING_05HZ;
-        break;
+    switch (freq)
+    {
+        case HTK16K33_F_0HZ:
+            result = HT16K33_BLINKING_0HZ;
+            break;
+        case HTK16K33_F_2HZ:
+            result = HT16K33_BLINKING_1HZ;
+            break;
+        case HTK16K33_F_1HZ:
+            result = HT16K33_BLINKING_1HZ;
+            break;
+        case HTK16K33_F_05HZ:
+            result = HT16K33_BLINKING_05HZ;
+            break;
     }
     return result;
 }
@@ -104,8 +105,8 @@ static esp_err_t send_short_cmd(i2c_dev_t* dev, uint8_t cmd)
 }
 
 esp_err_t ht16k33_init_desc(i2c_dev_t* dev, i2c_port_t port,
-    gpio_num_t sda_gpio, gpio_num_t scl_gpio,
-    uint8_t addr)
+                            gpio_num_t sda_gpio, gpio_num_t scl_gpio,
+                            uint8_t addr)
 {
     CHECK_ARG(dev);
 
@@ -132,7 +133,7 @@ esp_err_t ht16k33_init(i2c_dev_t* dev)
 
     // Set display off, no blinking.
     ESP_RETURN_ON_ERROR(ht16k33_display_setup(dev, 0, HTK16K33_F_0HZ), TAG,
-        "Can't set display off, no blinking.");
+                        "Can't set display off, no blinking.");
 
     // Set to ROW output.
     ESP_RETURN_ON_ERROR(
@@ -141,7 +142,7 @@ esp_err_t ht16k33_init(i2c_dev_t* dev)
 
     // Set half brightness.
     ESP_RETURN_ON_ERROR(ht16k33_set_brightness(dev, HT16K33_MAX_BRIGHTNESS / 2),
-        TAG, "Can't set initial brightness.");
+                        TAG, "Can't set initial brightness.");
 
     // RAM initializes with random values. Zero it.
     ESP_RETURN_ON_ERROR(zero_ram(dev), TAG, "Can't zero the RAM.");
@@ -160,7 +161,8 @@ esp_err_t ht16k33_set_brightness(i2c_dev_t* dev, uint8_t brightness)
 {
     CHECK_ARG(dev);
 
-    if (brightness > 15) {
+    if (brightness > 15)
+    {
         ESP_LOGE(TAG, "Brightness shall be set in range 0-15.");
         return ESP_ERR_INVALID_ARG;
     }
@@ -173,18 +175,20 @@ esp_err_t ht16k33_set_brightness(i2c_dev_t* dev, uint8_t brightness)
 }
 
 esp_err_t ht16k33_display_setup(i2c_dev_t* dev, uint8_t on_flag,
-    ht16k33_blinking_freq_t blinking)
+                                ht16k33_blinking_freq_t blinking)
 {
     CHECK_ARG(dev);
 
     // on_flag is 1 bit.
-    if (on_flag > 0b1) {
+    if (on_flag > 0b1)
+    {
         ESP_LOGE(TAG, "on_flag can only be 0 or 1.");
         return ESP_ERR_INVALID_ARG;
     }
 
     // Blinking mode is just 2 bits.
-    if (blinking > 0b11) {
+    if (blinking > 0b11)
+    {
         ESP_LOGE(TAG, "Use only HTK16K33_F_* constants.");
         return ESP_ERR_INVALID_ARG;
     }
@@ -192,7 +196,7 @@ esp_err_t ht16k33_display_setup(i2c_dev_t* dev, uint8_t on_flag,
     uint8_t blinking_bits = ht16k33_blinking_freq_t_to_bits(blinking);
 
     ESP_RETURN_ON_ERROR(send_short_cmd(dev, HT16K33_CMD_DISPLAY_SETUP << 4 | blinking_bits << 1 | on_flag),
-        TAG, "Can't do display setup.");
+                        TAG, "Can't do display setup.");
 
     return ESP_OK;
 }

@@ -49,7 +49,8 @@ extern "C" {
 /**
  * Display blinking frequencies.
  */
-typedef enum { 
+typedef enum
+{
     HTK16K33_F_0HZ,
     HTK16K33_F_2HZ,
     HTK16K33_F_1HZ,

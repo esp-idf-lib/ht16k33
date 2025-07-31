@@ -35,7 +35,8 @@ void app_main()
     uint8_t all_off[HT16K33_RAM_SIZE_BYTES];
     memset(all_off, 0x00, HT16K33_RAM_SIZE_BYTES);
 
-    while (1) {
+    while (1)
+    {
         memset(&dev, 0, sizeof(i2c_dev_t));
         ESP_LOGI(tag, "Initializing HT16K33 descriptor.");
         ESP_ERROR_CHECK(ht16k33_init_desc(&dev, 0, CONFIG_EXAMPLE_I2C_MASTER_SDA, CONFIG_EXAMPLE_I2C_MASTER_SCL, HT16K33_DEFAULT_ADDR));
@@ -49,7 +50,8 @@ void app_main()
         ESP_LOGI(tag, "Snake");
         uint8_t snake_ram[HT16K33_RAM_SIZE_BYTES];
         memset(snake_ram, 0, HT16K33_RAM_SIZE_BYTES);
-        for (int bit = 0; bit < HT16K33_RAM_SIZE_BYTES * 8; bit++) {
+        for (int bit = 0; bit < HT16K33_RAM_SIZE_BYTES * 8; bit++)
+        {
             int byte = bit / 8;
             snake_ram[byte] = snake_ram[byte] | 1 << bit % 8;
             ESP_ERROR_CHECK(ht16k33_ram_write(&dev, snake_ram));
@@ -57,7 +59,8 @@ void app_main()
         }
         vTaskDelay(pdMS_TO_TICKS(1000));
 
-        for (int i = 0; i < 2; i++) {
+        for (int i = 0; i < 2; i++)
+        {
             ESP_LOGI(tag, "OFF");
             ESP_ERROR_CHECK(ht16k33_ram_write(&dev, all_off));
             vTaskDelay(pdMS_TO_TICKS(1000));
